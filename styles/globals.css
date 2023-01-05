@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hiddenScroll::-webkit-scrollbar {
+    display: none;
+
+}
+
+.hiddenScroll::-webkit-scrollbar-track {
+    display: none;
+
+}
+
+.hiddenScroll::-webkit-scrollbar-thumb {
+    display: none;
+
+}
+
+.hiddenScroll::-webkit-scrollbar-thumb:hover {
+    display: none;
+}
+
+*{
+    -webkit-tap-highlight-color: transparent;
+}

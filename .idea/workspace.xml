@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b71c4060-7dd0-44ba-91b1-25f652d468e1" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2J7GekeU80BiYpbwAPXn7yKH4d8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "16.15.0",
+    "javascript.nodejs.core.library.typings.version": "16.18.11",
+    "last_opened_file_path": "C:/Users/noeni/Documents/GitHub/dropdropdrop",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "ts.external.directory.path": "C:\\Users\\noeni\\AppData\\Local\\JetBrains\\Toolbox\\apps\\WebStorm\\ch-0\\222.4167.31\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\noeni\Documents\GitHub\symmetrical-pancake\components" />
+      <recent name="C:\Users\noeni\Documents\GitHub\symmetrical-pancake" />
+      <recent name="C:\Users\noeni\Documents\GitHub\symmetrical-pancake\assets\images" />
+      <recent name="C:\Users\noeni\Documents\GitHub\symmetrical-pancake\pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\noeni\Documents\GitHub\symmetrical-pancake" />
+      <recent name="C:\Users\noeni\Documents\GitHub\symmetrical-pancake\assets\fonts" />
+      <recent name="C:\Users\noeni\Documents\GitHub\symmetrical-pancake\pages\shop" />
+      <recent name="C:\Users\noeni\Documents\GitHub\symmetrical-pancake\assets\images" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="{         name: 'banane'     }," />
+    </option>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b71c4060-7dd0-44ba-91b1-25f652d468e1" name="Changes" comment="" />
+      <created>1671421805822</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671421805822</updated>
+      <workItem from="1671421807239" duration="8326000" />
+      <workItem from="1671762689186" duration="12504000" />
+      <workItem from="1671941931775" duration="7432000" />
+      <workItem from="1671981566675" duration="2863000" />
+      <workItem from="1672214679287" duration="4987000" />
+      <workItem from="1672259889032" duration="1552000" />
+      <workItem from="1672275058722" duration="8882000" />
+      <workItem from="1672337810517" duration="13850000" />
+      <workItem from="1672373299376" duration="2940000" />
+      <workItem from="1672686605674" duration="593000" />
+      <workItem from="1672771754397" duration="19955000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
