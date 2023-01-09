@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { useAddProduct} from '../recoil/hooks';
+import {useState} from "react";
 
 export default function Article({product}) {
 
     const addProduct = useAddProduct();
+    const [effect, setEffect] = useState(false)
 
     return (
 
@@ -31,7 +33,10 @@ export default function Article({product}) {
                     Qui mollitia mollitia aut reiciendis accusamus qui ipsum
                 </span>
             </span>
-            <button onClick={() => addProduct(product)} className='bg-orange-600 text-white w-full rounded-full py-5 text-md font-semibold'>Ajouter au panier</button>
+            <button onClick={() => {
+                addProduct(product)
+                setEffect(true)
+            }} onAnimationEnd={() => setEffect(false)}  className={`${effect && "animate-button"} bg-orange-600 text-white w-full rounded-full py-5 text-md font-semibold`}>Ajouter au panier</button>
         </div>
     )
 }

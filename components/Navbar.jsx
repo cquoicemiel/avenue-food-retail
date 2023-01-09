@@ -4,17 +4,31 @@ import Link from "next/link";
 import { useRecoilValue} from 'recoil';
 import { cartStatus } from '../recoil/Selectors';
 import { cartState as _cartState } from '../recoil/Atoms';
-import {useClearCart, useRemoveProduct} from "../recoil/hooks";
+import {useAddProduct, useClearCart, useRemoveProduct, useDeleteProduct} from "../recoil/hooks";
+import {useRouter} from "next/router";
 
 export default function Navbar(){
 
+
+
+    const router = useRouter()
+    const [effect, setEffect] = useState(false)
+    const [backEffect, setBackEffect] = useState(false)
+    const [addEffect, setAddEffect] = useState(false)
+    const [removeEffect, setRemoveEffect] = useState(false)
+    const deleteProduct = useDeleteProduct()
     const removeProduct = useRemoveProduct()
+    const addProduct = useAddProduct()
     const clearCart = useClearCart()
     const cart = useRecoilValue(cartStatus);
     const cartState = useRecoilValue(_cartState);
 
     const [toggleCart, setToggleCart] = useState(false)
     const [toggleMenu, setToggleMenu] = useState(false)
+
+    useEffect(() => {
+            setEffect(true)
+    }, [cart, cartState])
 
     useEffect(() => {
         if (toggleCart || toggleMenu){
@@ -86,8 +100,15 @@ export default function Navbar(){
                             </span>
                         </Link>
 
-                        <span onClick={() => removeProduct(product)} className='w-16 flex justify-center items-center'>
-                            <Image alt={'supprimer le produit du panier'} className={'rotate-45 opacity-60 h-11 w-11'} src={require('../assets/images/increase.webp')}/>
+                        <span className='w-16 flex justify-between items-center'>
+                            <Image onClick={() => {
+                                addProduct(product)
+                                setAddEffect(true)
+                            }} alt={'supprimer le produit du panier'} onAnimationEnd={() => setAddEffect(false)} className={`${addEffect && 'animate-pop'} opacity-60 h-7 w-7 bg-gray-200 rounded-md`} src={require('../assets/images/increase.webp')}/>
+                            <Image onClick={() => {
+                                setRemoveEffect(true)
+                                removeProduct(product)
+                            }} alt={'supprimer le produit du panier'} onAnimationEnd={() => setRemoveEffect(false)} className={`${removeEffect && 'animate-pop'} opacity-60 h-7 w-7 bg-gray-200 rounded-md`} src={require('../assets/images/decrease.webp')}/>
                         </span>
 
                     </span>
@@ -96,7 +117,7 @@ export default function Navbar(){
     }
 
     return(
-        <div className='absolute w-screen h-16 flex items-center justify-around shadow-sm'>
+        <div className='z-10 fixed bg-white w-screen h-16 flex items-center justify-around shadow-sm'>
             <span className='basis-1/4 h-7 sm:h-8 md:h-9 flex justify-center'>
                 {toggleMenu
                     ?
@@ -105,12 +126,20 @@ export default function Navbar(){
                     <Image onClick={() => OpenMenu()} height={28} width={28} object-fit="contain"  src={require('../assets/images/menu.webp')} alt="Open Menu"/>
                 }
             </span>
+            {router.pathname.includes("products") &&
+                <div className='h-16 flex fixed z-20 left-0 top-0 w-1/3 bg-white items-center justify-center'>
+                    <Link href={"/shop"} onClick={() => setBackEffect(true)} onAnimationEnd={() => setBackEffect(false)} className={`${backEffect && 'animate-pop'}  bg-gray-100 rounded-3xl h-8 w-8 p-1`}>
+                        <Image alt={"Retourner aux produits"} className={"rotate-180"} src={require('../assets/images/blackarrow.webp')}/>
+                    </Link>
+                </div>}
 
             <span className='font-bold text-2xl'>Avenue</span>
 
-            <span className='basis-1/4 h-7 sm:h-8 md:h-9 flex justify-center relative' onClick={() => OpenCart()}>
+            <span className={`basis-1/4 h-7 sm:h-8 md:h-9 flex justify-center relative`}  onClick={() => {
+                OpenCart()
+            }}>
                 <span className='relative'>
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg className={`${effect && 'animate-pop'}`} onAnimationEnd={() => setEffect(false)} width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fillRule="evenodd" clipRule="evenodd" d="M16.5137 21.4999H8.16592C5.09955 21.4999 2.74715 20.3924 3.41534 15.9347L4.19338 9.89351C4.60528 7.66925 6.02404 6.81799 7.26889 6.81799H17.4474C18.7105 6.81799 20.0469 7.73332 20.5229 9.89351L21.3009 15.9347C21.8684 19.8889 19.5801 21.4999 16.5137 21.4999Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
                         <path d="M16.651 6.59836C16.651 4.21229 14.7167 2.27799 12.3306 2.27799V2.27799C11.1816 2.27312 10.078 2.72615 9.26381 3.53691C8.44963 4.34766 7.99193 5.44935 7.99194 6.59836H7.99194" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
                         <path d="M15.2963 11.1018H15.2506" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
@@ -123,13 +152,13 @@ export default function Navbar(){
 
 
 
-            <div className={`fixed justify-center flex-col inset-y-0 pt-24 w-full ${toggleCart? "right-0" : "-right-full"} transition-all flex box-border px-6 bg-white max-w-screen-md z-20`}>
+            <div className={`fixed justify-center flex-col inset-y-0 pt-24 w-full ${toggleCart? "right-0" : "-right-full"} transition-all flex box-border px-6 bg-white max-w-screen-md z-50`}>
                 <span className='absolute inset-0 w-screen h-16 flex items-center shadow-sm'>
                     <svg className='h-7 sm:h-8 md:h-9 w-7 sm:w-8 md:w-9 relative cursor-pointer basis-1/6' onClick={closeMenus} fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="48px" height="48px"><path d="M 4.9902344 3.9902344 A 1.0001 1.0001 0 0 0 4.2929688 5.7070312 L 10.585938 12 L 4.2929688 18.292969 A 1.0001 1.0001 0 1 0 5.7070312 19.707031 L 12 13.414062 L 18.292969 19.707031 A 1.0001 1.0001 0 1 0 19.707031 18.292969 L 13.414062 12 L 19.707031 5.7070312 A 1.0001 1.0001 0 0 0 18.980469 3.9902344 A 1.0001 1.0001 0 0 0 18.292969 4.2929688 L 12 10.585938 L 5.7070312 4.2929688 A 1.0001 1.0001 0 0 0 4.9902344 3.9902344 z"/></svg>
                     <span className='ml-4 font-bold text-2xl'>Panier</span>
                 </span>
                 {cartState.length > 0 ?
-                    <span className='flex flex-col items-center justify-start w-full h-full gap-20 pt-10'>
+                    <span className='flex flex-col items-center justify-start w-full h-full gap-16 pt-10'>
                         {/*<button className='py-4 bg-red-500 rounded-full text-lg text-white w-full' onClick={clearCart}>Vider le panier</button>*/}
 
                          <div style={{minHeight: '50vh'}} className='hiddenScroll flex flex-col w-full gap-4 pt-4 overflow-y-scroll'>
