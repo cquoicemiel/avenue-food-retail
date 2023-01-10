@@ -6,6 +6,8 @@ const {products} = require('../libs/products')
 export default function Shop() {
 
 
+
+
     const categories = [
         'fruits', 'légumes', 'céréales', 'fromage', 'viande', 'bio'
     ]
@@ -13,15 +15,20 @@ export default function Shop() {
     const [category, setCategory] = useState('')
 
     function Product({product}) {
+
+        const [effect, setEffect] = useState(false)
+
         return(
             <Link href={`shop/products/${product.id}`}>
-                <span className='shadow-sm flex w-full h-64 rounded-xl flex-col pb-3 transition-shadow hover:shadow-md'>
+                <span onClick={() => {
+                    setEffect(true)
+                }} onAnimationEnd={() => setEffect(false)} className={`${effect && 'animate-smPop'} shadow-sm flex w-full h-64 rounded-xl flex-col pb-3 transition-shadow`}>
                     <Image alt={product.name} className='h-3/5 flex rounded-t-xl object-scale-down' src={require(`../assets/images/${product.name}.webp`)}/>
                     <span className='h-2/5 flex flex-col p-2.5'>
                         <span className='size text-sm text-gray-400 capitalize'>{product.scale}</span>
                         <span className='name capitalize font-semibold text-lg'>{product.name}</span>
                         <span className='flex w-full justify-between items-center'>
-                            <span className='price text-orange-500 font-extrabold'>{`€${product.price.toFixed(2)}`}</span>
+                            <span className='price text-green-600 font-extrabold'>{`€${product.price.toFixed(2)}`}</span>
                             <span className='rounded-full bg-gray-100'>
                                 <svg className='h-7 w-7' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12H16M12 8L12 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
                             </span>
@@ -58,7 +65,7 @@ export default function Shop() {
                                     category === data ? setCategory('') : setCategory(data)
                                 }} className='flex flex-col items-center cursor-pointer'>
                                 <span
-                                    className={`${category === data ? 'bg-orange-500' : 'bg-white'} w-16 h-16 p-4 flex transition-all rounded-2xl`}>
+                                    className={`${category === data ? 'bg-green-600' : 'bg-white'} w-16 h-16 p-4 flex transition-all rounded-2xl`}>
                                     <Image className={`transition-all ${category === data && 'invert'}`}
                                            alt={`${data} category`} src={require('../assets/images/apple.webp')}/>
                                 </span>

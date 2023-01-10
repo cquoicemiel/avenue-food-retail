@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
 
-import { cartState, navbarState } from './Atoms';
+import {cartState, navbarState, userState} from './Atoms';
 
 export const useAddProduct = () => {
   const [cart, setCart] = useRecoilState(cartState);
@@ -64,18 +64,33 @@ export const useDeleteProduct = (product) => {
       }
 }
 
-export const useClearCart = () => {
-  const [cart, setCart] = useRecoilState(cartState);
-  return () => {
-    setCart([])
+export const useUpdateActiveCard = () => {
+
+  const [user, setUser] = useRecoilState(userState)
+
+  return (id)  => {
+    const updatedValues = {activeCard: id}
+    setUser(data => ({
+      ...data,
+      ...updatedValues
+    }))
+  }
+}
+
+export const useUpdateNavbar = () => {
+
+  const [navbar, setNavbar] = useRecoilState(navbarState)
+
+  return (arrow, label, cart)  => {
+    setNavbar({arrow: arrow, label: label, cart: cart})
   }
 }
 
 
-export const useSetNavbar = (bool) => {
-  const [state, setState] = useRecoilState(navbarState);
+export const useClearCart = () => {
+  const [cart, setCart] = useRecoilState(cartState);
   return () => {
-    setState(bool)
+    setCart([])
   }
 }
 

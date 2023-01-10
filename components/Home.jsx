@@ -13,7 +13,7 @@ export default function Home() {
             <div className='flex flex-col items-center justify-evenly h-1/2'>
                 <h1 className={'text-3xl font-black text-center'}>{"Tous vos produits d'épicerie, devant votre porte"}</h1>
                 <desc className={'text-gray-500 text-center'}>Commandez des fruits et légumes frais ainsi que des produits animaliers, provenant de producteurs locaux</desc>
-                <Link href={'/shop'} className={'text-white py-6 bg-orange-500 rounded-full w-1/2 font-bold flex justify-center items-center'}>Découvrir</Link>
+                <Link href={'/shop'} className={'text-white py-6 bg-green-600 rounded-full w-1/2 font-bold flex justify-center items-center'}>Découvrir</Link>
             </div>
 
         </div>

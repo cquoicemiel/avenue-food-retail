@@ -1,11 +1,15 @@
 import {Navbar, Footer} from './'
+import {useRecoilValue} from "recoil";
+import {navbarState} from "../recoil/Atoms";
 
 function Layout({children}) {
+
+    const navbar = useRecoilValue(navbarState)
 
     return (
         <>
             <div className={'sm:hidden'}>
-                <Navbar/>
+                {navbar ? <Navbar/> : null}
                 <div className={`min-h-screen pt-16`}>{children}</div>
                 <Footer/>
             </div>
