@@ -6,9 +6,12 @@ import { cartStatus } from '../recoil/Selectors';
 import {cartState as _cartState, navbarState} from '../recoil/Atoms';
 import {useAddProduct, useRemoveProduct} from "../recoil/hooks";
 import {useRouter} from "next/router";
+import localFont from "@next/font/local";
+
+const font = localFont({ src: '../assets/fonts/DxSitrus-Expanded.otf' })
+
 
 export default function Navbar(){
-
 
 
     const [effect, setEffect] = useState(false)
@@ -148,7 +151,7 @@ export default function Navbar(){
             }
 
 
-            <span className='font-bold text-2xl w-1/3 text-center'>{navbar.label}</span>
+            <span className={`font-bold text-2xl w-1/3 text-center ${font.className}`}>{navbar.label}</span>
 
                 <span className={`w-1/3 h-7 sm:h-8 md:h-9 flex justify-center relative`}  onClick={() => {
                     OpenCart()

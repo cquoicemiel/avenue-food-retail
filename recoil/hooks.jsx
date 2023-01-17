@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
 
-import {cartState, navbarState, userState} from './Atoms';
+import {cartState, filterState, navbarState, userState} from './Atoms';
 
 export const useAddProduct = () => {
   const [cart, setCart] = useRecoilState(cartState);
@@ -91,6 +91,16 @@ export const useClearCart = () => {
   const [cart, setCart] = useRecoilState(cartState);
   return () => {
     setCart([])
+  }
+}
+
+export const useSetSearch = () => {
+  const [filters, setFilters] = useRecoilState(filterState)
+  return (search) => {
+    setFilters(data => ({
+      ...data,
+      ...{search: search}
+    }))
   }
 }
 

@@ -1,12 +1,17 @@
 import {useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
-const {products} = require('../libs/products')
+import {useRecoilValue} from "recoil";
+import {filterState} from "../recoil/Atoms";
+import {products} from "../libs/products";
+import {useSetSearch} from "../recoil/hooks";
 
 export default function Shop() {
 
-
-
+    const [toggleFilter, setToggleFilter] = useState(false)
+    const filters = useRecoilValue(filterState)
+    const setSearch = useSetSearch()
+    const filteredProducts = products.filter((product) => (filters.search === null || product.name.includes(filters.search)))
 
     const categories = [
         'fruits', 'légumes', 'céréales', 'fromage', 'viande', 'bio'
@@ -53,7 +58,7 @@ export default function Shop() {
                         s91.5,204,204.1,204c48.8,0,93.7-17.3,128.9-46l121.3,121.3c8.3,8.3,20.9,8.3,29.2,0S491.8,462.744,483.4,454.444z M40.7,204.144
                         c0-90.1,73.2-163.3,163.3-163.3s163.4,73.3,163.4,163.4s-73.3,163.4-163.4,163.4S40.7,294.244,40.7,204.144z"/>
                 </svg>
-                <input type={'text'} placeholder={'Chercher un produit...'} className='bg-transparent placeholder-gray-400 py-2.5 text-md outline-none'/>
+                <input type={'search'} placeholder={'Chercher un produit...'} onChange={(e) => setSearch(e.target.value)} className='bg-transparent placeholder-gray-400 py-2.5 text-md outline-none'/>
                 <svg className='opacity-60  w-5 h-5' viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g><path d="M0 3.7L11 3.7 11 2.3 0 2.3 0 3.7zM13 0C12.4477153 0 12 .44771525 12 1L12 5C12 5.55228475 12.4477153 6 13 6 13.5522847 6 14 5.55228475 14 5L14 1C14 .44771525 13.5522847 0 13 0zM7 8.3L7 7C7 6.44771525 6.55228475 6 6 6 5.44771525 6 5 6.44771525 5 7L5 11C5 11.5522847 5.44771525 12 6 12 6.55228475 12 7 11.5522847 7 11L7 9.7 14 9.7 14 8.3 7 8.3zM0 9.7L4 9.7 4 8.3 0 8.3 0 9.7z" transform="translate(1 2)"/></g></svg>
             </span>
 
@@ -78,7 +83,7 @@ export default function Shop() {
             </span>
 
             <span className='hiddenScroll products grid grid-cols-2 gap-4 pt-4 overflow-y-scroll'>
-                    {products.map(product => (
+                    {filteredProducts.map(product => (
                                 <Product product={product} key={product.id}/>
                             )
 

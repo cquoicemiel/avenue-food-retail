@@ -25,3 +25,8 @@ export const navbarState = atom({
   key: 'navbarState',
   default: {arrow: false, label: "Avenue", cart: true},
 })
+
+export const filterState = atom({
+  key: 'filterState',
+  default: {price: null, search: null, category: null}
+})
