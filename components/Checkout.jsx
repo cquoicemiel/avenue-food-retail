@@ -2,7 +2,7 @@ import {useRecoilValue} from "recoil";
 import { cartStatus } from '../recoil/Selectors';
 import { cartState as _cartState, userState  } from '../recoil/Atoms';
 import Image from "next/image";
-import {useSetNavbar, useUpdateActiveCard} from "../recoil/hooks";
+import {useClearCart, useSetNavbar, useUpdateActiveCard} from "../recoil/hooks";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 
@@ -19,7 +19,7 @@ export default function Checkout() {
     const user = useRecoilValue(userState)
     const shipping = 3.50
     const discount = 0
-
+    const clearCart = useClearCart()
     const router = useRouter()
     // const setNavbar = useSetNavbar()
     // useEffect(() => {
@@ -160,6 +160,8 @@ export default function Checkout() {
             <button onClick={() => {
                 setEffect(false)
                 setEffect(true)
+                router.push('/shop')
+                clearCart()
             }} onAnimationEnd={() => setEffect(false)} className={`${effect && "animate-button"} bg-green-600 text-white w-full rounded-full py-5 text-md font-semibold`}>Confirmer la commande</button>
         </span>
     )

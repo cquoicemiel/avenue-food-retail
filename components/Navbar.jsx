@@ -151,7 +151,7 @@ export default function Navbar(){
             }
 
 
-            <span className={`font-bold text-2xl w-1/3 text-center ${font.className}`}>{navbar.label}</span>
+            <span className={`font-bold text-2xl w-1/3  text-center ${font.className}`}>{navbar.label}</span>
 
                 <span className={`w-1/3 h-7 sm:h-8 md:h-9 flex justify-center relative`}  onClick={() => {
                     OpenCart()
@@ -234,7 +234,7 @@ export default function Navbar(){
             <span className='flex flex-col py-10 px-6 gap-6'>
                 <MenuLink label="produits" link="/shop"/>
                 <MenuLink label="à propos de nous" link="/aboutus"/>
-                <MenuLink label="faq" link="/faq"/>
+                <MenuLink label="questions fréquentes" link="/faq"/>
             </span>
                 <div className='flex w-full absolute bottom-0 h-16'>
                     <FooterLink label="mon compte" link="/account"/>
