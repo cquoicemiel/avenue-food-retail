@@ -29,8 +29,12 @@ export default function Navbar(){
     const [toggleMenu, setToggleMenu] = useState(false)
 
     useEffect(() => {
-        setEffect(false)
-        setEffect(true)
+        if(effect){
+            setEffect(false)
+            setTimeout(() => setEffect(true), 10)
+        }else{
+            setEffect(true)
+        }
     }, [cart, cartState])
 
     useEffect(() => {
@@ -82,14 +86,11 @@ export default function Navbar(){
 
     const CartArticle = ({product}) => {
 
-        const [addEffect, setAddEffect] = useState(false)
-        const [removeEffect, setRemoveEffect] = useState(false)
-
         return(
                 <span className='w-full flex h-20'>
                     <Link onClick={() => setToggleCart(false)} href={`/shop/products/${product.id}`}>
                         <span className='basis-1/4'>
-                            <Image alt={product.name} className='h-20 w-20 bg-green-200 p-1 object-scale-down rounded-full flex' src={require(`../assets/images/${product.name}.webp`)}/>
+                            <Image alt={product.name} className='h-20 w-20 bg-green-200 p-1 object-scale-down rounded-full flex' src={require(`../assets/images/products/${product.name}.webp`)}/>
                         </span>
                     </Link>
 
@@ -107,16 +108,8 @@ export default function Navbar(){
                         </Link>
 
                         <span className='w-16 flex justify-between items-center'>
-                            <Image onClick={() => {
-                                addProduct(product)
-                                setAddEffect(false)
-                                setAddEffect(true)
-                            }} alt={'supprimer le produit du panier'} onAnimationEnd={() => setAddEffect(false)} className={`${addEffect && 'animate-pop'} opacity-60 h-7 w-7 bg-gray-200 rounded-md`} src={require('../assets/images/increase.webp')}/>
-                            <Image onClick={() => {
-                                removeProduct(product)
-                                setAddEffect(false)
-                                setRemoveEffect(true)
-                            }} alt={'supprimer le produit du panier'} onAnimationEnd={() => setRemoveEffect(false)} className={`${removeEffect && 'animate-pop'} opacity-60 h-7 w-7 bg-gray-200 rounded-md`} src={require('../assets/images/decrease.webp')}/>
+                            <Image onClick={() => {addProduct(product)}} alt={'supprimer le produit du panier'} className={`opacity-60 h-7 w-7 bg-gray-200 rounded-md`} src={require('../assets/images/increase.webp')}/>
+                            <Image onClick={() => {removeProduct(product)}} alt={'supprimer le produit du panier'} className={`opacity-60 h-7 w-7 bg-gray-200 rounded-md`} src={require('../assets/images/decrease.webp')}/>
                         </span>
 
                     </span>
@@ -163,7 +156,7 @@ export default function Navbar(){
                         <path d="M15.2963 11.1018H15.2506" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
                         <path d="M9.46566 11.1018H9.41989" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
                     </svg>
-                    {cartState.length > 0 ? <span className='absolute bg-green-600 h-4 w-4 text-xs text-white flex justify-center items-center rounded-full top-0 -right-2'>{cart.totalItems}</span> : null}
+                    {cartState.length > 0 ? <span className='absolute bg-green-600 h-5 w-5 text-xs text-white flex justify-center items-center rounded-full -top-1 -right-2.5'>{cart.totalItems}</span> : null}
                 </span>
                 </span>
 
@@ -183,9 +176,12 @@ export default function Navbar(){
 
             <div className={`fixed justify-center flex-col inset-y-0 pt-24 w-full ${toggleCart? "right-0" : "-right-full"} transition-all flex box-border px-6 bg-white max-w-screen-md z-50`}>
                 <span className={`${toggleCart ? "opacity-100" : "opacity-0 pointer-events-none"} transition-opacity fixed bg-white inset-0 w-screen h-16 flex items-center shadow-sm`}>
-                    <svg className='w-1/3 h-6 w-6 flex justify-center relative' onClick={closeMenus} fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="48px" height="48px"><path d="M 4.9902344 3.9902344 A 1.0001 1.0001 0 0 0 4.2929688 5.7070312 L 10.585938 12 L 4.2929688 18.292969 A 1.0001 1.0001 0 1 0 5.7070312 19.707031 L 12 13.414062 L 18.292969 19.707031 A 1.0001 1.0001 0 1 0 19.707031 18.292969 L 13.414062 12 L 19.707031 5.7070312 A 1.0001 1.0001 0 0 0 18.980469 3.9902344 A 1.0001 1.0001 0 0 0 18.292969 4.2929688 L 12 10.585938 L 5.7070312 4.2929688 A 1.0001 1.0001 0 0 0 4.9902344 3.9902344 z"/></svg>
-                    <span className='font-bold text-2xl w-1/3 text-center'>Panier</span>
-                    <span className={`w-1/3 h-7 sm:h-8 md:h-9 flex justify-center relative`}></span>
+                    <span className='w-1/3'></span>
+                    <span className='h-16 flex fixed z-20 left-0 top-0 w-1/3 bg-white items-center justify-center'>
+                        <svg className='w-1/3 h-6 w-6 flex justify-center relative' onClick={() => closeMenus()} fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="48px" height="48px"><path d="M 4.9902344 3.9902344 A 1.0001 1.0001 0 0 0 4.2929688 5.7070312 L 10.585938 12 L 4.2929688 18.292969 A 1.0001 1.0001 0 1 0 5.7070312 19.707031 L 12 13.414062 L 18.292969 19.707031 A 1.0001 1.0001 0 1 0 19.707031 18.292969 L 13.414062 12 L 19.707031 5.7070312 A 1.0001 1.0001 0 0 0 18.980469 3.9902344 A 1.0001 1.0001 0 0 0 18.292969 4.2929688 L 12 10.585938 L 5.7070312 4.2929688 A 1.0001 1.0001 0 0 0 4.9902344 3.9902344 z"/></svg>
+                    </span>
+                    <span className={`font-bold text-2xl w-1/3  text-center`}>Panier</span>
+                    <span className={`w-1/3`}></span>
                 </span>
                 {cartState.length > 0 ?
                     <span className='flex flex-col items-center justify-start w-full h-full gap-16 pt-10'>

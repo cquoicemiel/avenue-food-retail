@@ -18,7 +18,7 @@ export default function Article({product}) {
     return (
 
         <div className='flex flex-col gap-7 w-full h-full pt-4 pb-8 px-7'>
-            <Image style={{maxHeight: '19rem'}} className="h-1/2 object-scale-down w-full" width={500} height={500} alt={product.name} src={require(`../assets/images/${product.name}.webp`)}/>
+            <Image style={{maxHeight: '19rem'}} className="h-1/2 object-scale-down w-full" width={500} height={500} alt={product.name} src={require(`../assets/images/products/${product.name}.webp`)}/>
             <span className='flex flex-col mt-10'>
                 <span className='text-gray-400 capitalize text-sm'>{product.scale}</span>
                 <span className='flex justify-between'>
@@ -43,8 +43,12 @@ export default function Article({product}) {
             </span>
             <button onClick={() => {
                 addProduct(product)
-                setEffect(false)
-                setEffect(true)
+                if(effect){
+                    setEffect(false)
+                    setTimeout(() => setEffect(true), 10)
+                }else{
+                    setEffect(true)
+                }
             }} onAnimationEnd={() => setEffect(false)}  className={`${effect && "animate-button"} bg-green-600 text-white w-full rounded-full py-5 text-md font-semibold`}>Ajouter au panier</button>
         </div>
     )

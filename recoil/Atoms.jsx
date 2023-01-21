@@ -24,9 +24,11 @@ export const userState = atom({
 export const navbarState = atom({
   key: 'navbarState',
   default: {arrow: false, label: "Avenue", cart: true},
+  effects_UNSTABLE: [persistAtom]
 })
 
 export const filterState = atom({
   key: 'filterState',
-  default: {price: null, search: null, category: null}
+  default: {price: null, search: null, categories: [], labels: []},
+  effects_UNSTABLE: [persistAtom]
 })

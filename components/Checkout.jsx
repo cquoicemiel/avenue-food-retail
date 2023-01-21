@@ -36,7 +36,7 @@ export default function Checkout() {
 
         function VisaWave() {
             return (
-                <svg
+                <span
                     viewBox="0 0 1200 540"
                     width={1200}
                     height={540}
@@ -53,7 +53,7 @@ export default function Checkout() {
                         fill="#001e4c"
                         strokeLinecap="round"
                     />
-                </svg>
+                </span>
             )
         }
 
@@ -93,7 +93,7 @@ export default function Checkout() {
                     <span className='ml-4 font-bold text-2xl'>Commande</span>
                 </span>
 
-                <span className='w-full flex flex-col h-36 shadow-sm rounded-xl p-5 relative basis-5/6'>
+                <span className='w-full flex flex-col h-36 shadow-sm rounded-xl bg-gray-300 p-5 relative basis-5/6'>
                     <span className={'w-full h-full flex justify-end'}>
                         <span className='flex gap-3 font-semibold text-xl tracking-wide'>
                             <input value={'xxxx'} type={"password"} disabled className='tracking-widest bg-transparent h-1/2 text-end w-11'/>
@@ -107,7 +107,7 @@ export default function Checkout() {
                             <span className='font-semibold'>{card.date}</span>
                         </span>
                     </span>
-                    {card.brand === "mastercard" ? <MastercardWave/> : <VisaWave/>}
+                    {/*{card.brand === "mastercard" ? <MastercardWave/> : <VisaWave/>}*/}
 
 
                 </span>
@@ -136,7 +136,7 @@ export default function Checkout() {
                     </span>
                     <span className={`flex w-full justify-between`}>
                         <span className='basis-4/5 font-semibold text-gray-400 text-lg'>Réduction</span>
-                        <span className='text-center basis-1/5 text-red-600 font-semibold text-lg'>-€ {discount.toFixed(2)}</span>
+                        <span className={`text-center basis-1/5 ${discount === 0 ? 'text-gray-300' : 'text-red-600'} font-semibold text-lg`}>-€ {discount.toFixed(2)}</span>
                     </span>
                 </span>
                 <span className={`flex w-full justify-between`}>
@@ -158,7 +158,6 @@ export default function Checkout() {
                 </span>
             </span>
             <button onClick={() => {
-                setEffect(false)
                 setEffect(true)
                 router.push('/shop')
                 clearCart()

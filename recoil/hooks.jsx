@@ -104,3 +104,46 @@ export const useSetSearch = () => {
   }
 }
 
+export const useToggleSetCategory = () => {
+  const [filters, setFilters] = useRecoilState(filterState)
+
+  return (category) => {
+    if(filters.categories.includes(category)){
+      const updatedValues = {categories: filters.categories.filter(element => element !== category)}
+      setFilters((data) => ({
+        ...data,
+        ...updatedValues
+      }))
+    }else{
+      const updatedValues = {categories: filters.categories.concat(category)}
+      setFilters((data) => ({
+        ...data,
+        ...updatedValues
+      }))
+    }
+  }
+
+  }
+
+export const useToggleSetLabel = () => {
+  const [filters, setFilters] = useRecoilState(filterState)
+
+  return (label) => {
+    if(filters.labels.includes(label)){
+      const updatedValues = {labels: filters.labels.filter(element => element !== label)}
+      setFilters((data) => ({
+        ...data,
+        ...updatedValues
+      }))
+    }else{
+      const updatedValues = {labels: filters.labels.concat(label)}
+      setFilters((data) => ({
+        ...data,
+        ...updatedValues
+      }))
+    }
+  }
+
+}
+
+
