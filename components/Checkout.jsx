@@ -36,7 +36,7 @@ export default function Checkout() {
 
         function VisaWave() {
             return (
-                <span
+                <svg
                     viewBox="0 0 1200 540"
                     width={1200}
                     height={540}
@@ -53,7 +53,7 @@ export default function Checkout() {
                         fill="#001e4c"
                         strokeLinecap="round"
                     />
-                </span>
+                </svg>
             )
         }
 
@@ -88,12 +88,10 @@ export default function Checkout() {
 
         return(
             <span onClick={() => updateActiveCard(card.id)} className='flex'>
-
                 <span className='absolute inset-0 w-screen h-16 flex items-center shadow-sm'>
                     <span className='ml-4 font-bold text-2xl'>Commande</span>
                 </span>
-
-                <span className='w-full flex flex-col h-36 shadow-sm rounded-xl bg-gray-300 p-5 relative basis-5/6'>
+                <span className='w-full flex flex-col h-36 shadow-sm rounded-xl p-5 relative basis-5/6'>
                     <span className={'w-full h-full flex justify-end'}>
                         <span className='flex gap-3 font-semibold text-xl tracking-wide'>
                             <input value={'xxxx'} type={"password"} disabled className='tracking-widest bg-transparent h-1/2 text-end w-11'/>
@@ -107,13 +105,10 @@ export default function Checkout() {
                             <span className='font-semibold'>{card.date}</span>
                         </span>
                     </span>
-                    {/*{card.brand === "mastercard" ? <MastercardWave/> : <VisaWave/>}*/}
-
-
+                    {card.brand === "mastercard" ? <MastercardWave/> : <VisaWave/>}
                 </span>
                 <span className='flex justify-center items-center basis-1/6'>
                     <span className={`transition-colors h-5 w-5 ${user.activeCard === card.id? "bg-green-400" : "bg-white"} rounded-full border-2 ${user.activeCard === card.id ? "border-green-400" : "border-black"}`}>
-
                     </span>
                 </span>
         </span>
@@ -161,7 +156,7 @@ export default function Checkout() {
                 setEffect(true)
                 router.push('/shop')
                 clearCart()
-            }} onAnimationEnd={() => setEffect(false)} className={`${effect && "animate-button"} bg-green-600 text-white w-full rounded-full py-5 text-md font-semibold`}>Confirmer la commande</button>
+            }} onAnimationEnd={() => setEffect(false)} className={`${effect && "animate-button"} bg-green-600 text-white w-full rounded-xl py-5 text-lg font-semibold`}>Confirmer la commande</button>
         </span>
     )
 }

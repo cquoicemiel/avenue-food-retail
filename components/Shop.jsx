@@ -188,7 +188,6 @@ export default function Shop() {
             </span>
 
 
-
             <span className='hiddenScroll products grid grid-cols-2 gap-4 pt-4 overflow-y-scroll'>
                     {filteredProducts.map(product => (
                                 <Product product={product} key={product.id}/>

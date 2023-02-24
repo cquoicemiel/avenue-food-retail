@@ -49,7 +49,7 @@ export default function Article({product}) {
                 }else{
                     setEffect(true)
                 }
-            }} onAnimationEnd={() => setEffect(false)}  className={`${effect && "animate-button"} bg-green-600 text-white w-full rounded-full py-5 text-md font-semibold`}>Ajouter au panier</button>
+            }} onAnimationEnd={() => setEffect(false)}  className={`${effect && "animate-button"} bg-green-600 text-white w-full rounded-xl py-5 text-lg font-semibold`}>Ajouter au panier</button>
         </div>
     )
 }
