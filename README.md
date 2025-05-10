@@ -1,6 +1,6 @@
 # Avenue Food Retail
 
-Projet de site de vente en ligne de légumes — **interface uniquement mobile pour l'instant**.
+Projet d'un site de vente fictif en ligne d'aliments — **interface uniquement mobile pour l'instant**.
 
 ---
 
