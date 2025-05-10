@@ -1,3 +1,36 @@
+# Avenue Food Retail
+
+Projet de site de vente en ligne de légumes — **interface uniquement mobile pour l'instant**.
+
+---
+
+## 📱 Design mobile uniquement
+
+L'interface actuelle est pensée et optimisée exclusivement pour une utilisation mobile.  
+L'affichage sur desktop ou tablette n'est **pas encore pris en charge**.
+
+---
+
+## 🚧 Projet en cours de développement
+
+Ce site est un **prototype non finalisé**.  
+Beaucoup de fonctionnalités sont incomplètes ou absentes, et l’aspect visuel est amené à évoluer.
+
+---
+
+
+## 📌 Objectifs à venir
+
+- Adaptation responsive pour desktop
+- Ajout des pages produit et panier
+- Intégration d’une API de paiement
+- Optimisations UI/UX
+
+---
+
+**⚠️ Ne pas utiliser ce site en production. Il s'agit d'un prototype expérimental.**
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
